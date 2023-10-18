@@ -1,0 +1,10 @@
+.table-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 810px) {
+    .table-container {
+        overflow-y: hidden;
+    }
+}

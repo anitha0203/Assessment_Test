@@ -1,0 +1,41 @@
+<div style="padding: 2vh 1vh 0.4vh 1vh;background-color: rgb(223, 223, 223);">
+  <nav class="container" style="display: flex;">
+    <img src="./assets/Vishesh logo.png" width="120" height="80" alt="logo" style="margin-top: -2vh;" />
+    <h4 style="margin-top: 1vh;margin-left: 1vh;">Vishesh Country Cache</h4>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 13vh;">
+    <div class="card col col12">
+      <h3 style="text-align: center;margin-bottom: 3vh;">Signin</h3>
+      <form class="container" [formGroup]="signinForm" (ngSubmit)="formSubmit()">
+
+        <div class="row">
+          <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+          <div style="color: red;" *ngIf="signinForm.controls['email'].invalid && signinForm.controls['email'].touched">
+            Email is required and must be valid.
+          </div>
+        </div><br>
+
+        <div class="row">
+          <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+          <div style="color: red;"
+            *ngIf="signinForm.controls['password'].invalid && signinForm.controls['password'].touched">
+            Password is required and must be at least 6 characters long.
+          </div>
+        </div><br>
+        <h3 style="color: red;">{{mess}}</h3>
+        <div style="text-align: center;margin-top: 2vh;">
+          <button type="submit" class="btn btn-primary" [disabled]="signinForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card col col11" style="align-items: center;">
+      <img src="./assets/Vishesh logo.png" width="250" height="170" alt="logo" />
+      <p style="margin-top: 2vh;">If you don't have an account? <span routerLink="/signup"
+          style="cursor: pointer;font-weight: bold;">Signup.</span></p>
+    </div>
+  </div>
+</div>

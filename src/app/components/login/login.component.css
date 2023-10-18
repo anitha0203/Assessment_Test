@@ -1,0 +1,39 @@
+.col11 {
+    height: 68vh;
+    border-radius: 0px;
+    background-color: rgb(93, 93, 255);
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 5vh;
+}
+
+.col12 {
+    height: 68vh;
+    border-radius: 0px;
+    padding: 4vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+@media (max-width: 850px) {
+    .row {
+        display: block;
+        flex-wrap: wrap;
+        margin-top: 1vh !important;
+    }
+
+    .col11 {
+        margin-bottom: 1vh;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 900px;
+    }
+}

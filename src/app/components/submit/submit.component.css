@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#centered-div {
+    background-color: rgb(56, 157, 91);
+    text-align: center;
+    padding: 20px;
+}
+
+#centered-div img {
+    margin-top: -2vh;
+}
+
+#centered-div p {
+    font-size: 40px;
+    color: rgb(233, 221, 221);
+    font-weight: 600;
+    font-style: italic;
+}

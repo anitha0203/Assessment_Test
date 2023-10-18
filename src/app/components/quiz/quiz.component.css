@@ -1,0 +1,35 @@
+span {
+    padding-left: 1.5vh;
+    font-size: 20px;
+}
+
+input[type='radio'] {
+    width: 15px;
+    height: 15px;
+}
+
+.question-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+}
+
+.question-number {
+    font-size: 16px;
+    color: black;
+}
+
+.question-circle.selected {
+    background-color: rgb(255, 225, 0) !important;
+    border-color: rgb(161, 161, 161);
+}
+
+.question-circle.selected1 {
+    background-color: rgb(110, 254, 110);
+    border-color: rgb(110, 254, 110);
+}

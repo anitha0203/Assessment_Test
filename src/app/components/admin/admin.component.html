@@ -1,0 +1,49 @@
+<div style="padding: 2vh 1vh 0.4vh 1vh;background-color: rgb(223, 223, 223);">
+  <nav class="container" style="display: flex;justify-content: space-between;">
+    <div style="display: flex;">
+        <img src="./assets/Vishesh logo.png" width="120" height="80" alt="logo" style="margin-top: -2vh;" />
+        <h4 style="margin-top: 1vh;margin-left: 1vh;">Vishesh Country Cache</h4>
+    </div>
+    <button class="btn btn-primary" style="margin: 0px 5px 10px 5px;" (click)="logout()">Logout</button>
+  </nav>
+</div>
+
+<div *ngIf="studentDetails.length>0" class="container table-container" style="padding: 10vh 5vh;">
+  <h3 style="padding-top: 5px;margin-bottom: 5vh;">Student Details</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Qualification</th>
+        <th scope="col">Passedout</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Score</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stu of studentDetails">
+        <td>{{stu.name}}</td>
+        <td>{{stu.qualification}}</td>
+        <td>{{stu.passedout}}</td>
+        <td>{{stu.email}}</td>
+        <td>{{stu.phonenumber}}</td>
+        <td>{{score(stu.email)}}</td>
+        <td><button class="btn btn-primary" *ngIf="score(stu.email) !== 0" (click)="saveEmail(stu.email)" routerLink="/viewall">View all</button>
+          <p *ngIf="score(stu.email) === 0"><span style="color: red;">*</span> Not attempted the test</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="display: flex;justify-content: space-between;">
+    <button type="button" class="btn btn-warning" (click)="record(records-1)" [disabled]="records <= 10">Go
+      back</button>
+    <button type="button" class="btn btn-info" (click)="record(records+1)" [disabled]="records > this.totalRecords">Go
+      next</button>
+  </div>
+</div>
+
+<div *ngIf="studentDetails.length<=0">
+  <h4 style="text-align: center;margin: 5vh;">There is no student Details</h4>
+</div>

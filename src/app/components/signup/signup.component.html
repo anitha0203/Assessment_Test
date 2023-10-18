@@ -1,0 +1,81 @@
+<div style="padding: 2vh 1vh 0.4vh 1vh;background-color: rgb(223, 223, 223);">
+  <nav class="container" style="display: flex;">
+    <img src="./assets/Vishesh logo.png" width="120" height="80" alt="logo" style="margin-top: -2vh;" />
+    <h4 style="margin-top: 1vh;margin-left: 1vh;">Vishesh Country Cache</h4>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 13vh;">
+    <div class="card col col11" style="align-items: center;">
+      <img src="./assets/Vishesh logo.png" width="250" height="170" alt="logo" />
+      <p style="margin-top: 2vh;">Already have an account? <span routerLink="/login"
+          style="cursor: pointer;font-weight: bold;">Signin.</span></p>
+    </div>
+    <div class="card col col12">
+      <h3 style="text-align: center;margin-bottom: 3vh;">Signup</h3>
+      <form class="container" [formGroup]="signupForm" (ngSubmit)="signupFormSubmit()">
+        <div class="row">
+          <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+          <div style="color: red;" *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched">
+            Name is required.
+          </div>
+        </div><br>
+        <div class="row">
+          <input type="text" class="form-control" id="qualification" placeholder="Qualification"
+            formControlName="qualification">
+          <div style="color: red;"
+            *ngIf="signupForm.controls['qualification'].invalid && signupForm.controls['qualification'].touched">
+            Qualification is required.
+          </div>
+        </div><br>
+        <div class="row">
+          <input type="number" class="form-control" id="passedout" placeholder="Passedout" formControlName="passedout"
+            minlength="4">
+          <div style="color: red;"
+            *ngIf="signupForm.controls['passedout'].invalid && signupForm.controls['passedout'].touched">
+            Passedout is required.
+          </div>
+        </div><br>
+        <div class="row">
+          <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+          <div style="color: red;" *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+            Email is required and must be valid.
+          </div>
+        </div><br>
+        <div class="row">
+          <input type="number" class="form-control" id="phone" placeholder="Phone number" formControlName="phone"
+            minlength="10" maxlength="12">
+          <div style="color: red;" *ngIf="signupForm.controls['phone'].invalid && signupForm.controls['phone'].touched">
+            Phone is required.
+          </div>
+        </div><br>
+
+        <div class="row">
+          <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+          <div style="color: red;"
+            *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+            Password is required and must be at least 6 characters long.
+          </div>
+        </div><br>
+
+        <div class="row" style="margin-bottom: 3vh;">
+          <input type="password" name="cpassword" formControlName="cpassword" placeholder="Confirm Password"
+            class="form-control">
+          <div style="color: red;"
+            *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+            Confirm Password is required.
+          </div>
+          <div *ngIf='!passwordsMatching && signupForm.controls["cpassword"].dirty' style="color: red;">
+            Passwords did not match
+          </div>
+        </div>
+        <h5 style="color: red;text-align: center;margin-top: 2vh;">{{mess}}</h5>
+
+        <div style="text-align: center;margin-top: 2vh;">
+          <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

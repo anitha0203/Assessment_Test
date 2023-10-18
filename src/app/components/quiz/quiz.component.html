@@ -1,0 +1,151 @@
+<div style="padding: 2vh 1vh 0.4vh 1vh;background-color: rgb(223, 223, 223);">
+    <nav class="container" style="display: flex;">
+      <img src="./assets/Vishesh logo.png" width="120" height="80" alt="logo" style="margin-top: -2vh;" />
+      <h4 style="margin-top: 1vh;margin-left: 1vh;">Vishesh Country Cache</h4>
+    </nav>
+</div>
+
+<div style="background-color: rgb(255, 255, 255);padding: 13vh 5vh;">
+    <div class="container"
+        style="background-color: rgb(255, 232, 232);padding: 5vh;border-radius: 15px;box-shadow: 2.5px 4px 2px 0px #cfcfcf;">
+        <form class="container" [(ngModel)]="quizForm">
+            <div *ngIf="questions[currentIndex]">
+
+                <div style="display: flex;justify-content: space-between;margin-bottom: 4vh;">
+                    <p></p>
+                    <h3 style="text-align: center;text-decoration: underline;"
+                        *ngIf=" questions[currentIndex].ques_type !== 'Sychometric'">
+                        {{questions[currentIndex].ques_type}}</h3>
+                    <h3 style="text-align: center;text-decoration: underline;"
+                        *ngIf=" questions[currentIndex].ques_type == 'Sychometric'">Psychometric</h3>
+                    <!-- <p style="font-size: 18px;">{{currentIndex+1}} - {{questions.length}}</p> -->
+                    <h5>{{ formatTime(timeRemaining) }}</h5>
+                </div>
+
+                <div style="display: flex; font-size: 22px;">
+                    <p style="padding-right: 1vh;">{{questions[currentIndex].id}}. </p>
+                    <p>{{ questions[currentIndex].question }}</p>
+                </div>
+
+                <div style="margin: 2vh 0vh 4vh 3vh;">
+                    <p *ngIf="questions[currentIndex].option1 != null">
+                        <input type="radio" name="answer" [value]="questions[currentIndex].option1"
+                            [(ngModel)]="answers[currentIndex]">
+                        <span>{{ questions[currentIndex].option1 }}</span>
+                    </p>
+                    <p *ngIf="questions[currentIndex].option2 != null">
+                        <input type="radio" name="answer" [value]="questions[currentIndex].option2"
+                            [(ngModel)]="answers[currentIndex]">
+                        <span>{{ questions[currentIndex].option2 }}</span>
+                    </p>
+                    <p *ngIf="questions[currentIndex].option3 != null">
+                        <input type="radio" name="answer" [value]="questions[currentIndex].option3"
+                            [(ngModel)]="answers[currentIndex]">
+                        <span>{{ questions[currentIndex].option3 }}</span>
+                    </p>
+                    <p *ngIf="questions[currentIndex].option4 != null">
+                        <input type="radio" name="answer" [value]="questions[currentIndex].option4"
+                            [(ngModel)]="answers[currentIndex]">
+                        <span>{{ questions[currentIndex].option4 }}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex;justify-content: space-between;">
+                <button type="button" class="btn btn-warning" [disabled]="currentIndex <= 0"
+                    (click)="previousQuestion()">Previous</button>
+                <button type="submit" class="btn btn-primary" *ngIf="currentIndex === questions.length-1"
+                    (click)="onSubmit()">Submit</button>
+                <button type="button" class="btn btn-info" [disabled]="currentIndex === questions.length-1"
+                    (click)="nextQuestion()">Next</button>
+            </div>
+        </form>
+
+        <div style="margin-top: 4vh;" class="row">
+            <div *ngFor="let num of questions; index as i" style="padding: 1vh;" class="col">
+                <button class="question-circle" (click)="selectQues(i)"
+                    [ngClass]="{  selected1: answers[i]!='', selected:i===currentIndex }">
+                    <div class="question-number">{{i+1}}</div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="row" style="background-color: rgb(255, 232, 232);padding: 5vh 5vh 4vh 4vh;">
+    <div class="col-3" style="background-color: rgb(255, 203, 203);padding: 2vh 5vh;">
+        <h5>Dashborad</h5>
+        <button class="btn btn-primary" (click)="quesType='Sychometric'" >Sychometric</button>
+        <button class="btn btn-primary" (click)="quesType='Communication'">Communication</button>
+        <button class="btn btn-primary" (click)="quesType='General Aptitude'">General Aptitude</button>
+        <button class="btn btn-primary" (click)="quesType='Programming'">Programming</button>
+        <button class="btn btn-primary" (click)="quesType='Database'">Database</button>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-8" *ngIf="questions" style="margin-top: 4vh;">
+        <form>
+            <div *ngIf="questions[currentIndex]">
+                <div style="display: flex; font-size: 22px;">
+                    <p style="padding-right: 1vh;">{{questions[currentIndex].id}}. </p>
+                    <p>{{ questions[currentIndex].question }}</p>
+                </div>
+                <p><input type="radio" *ngIf="questions[currentIndex].option1 != null">{{ questions[currentIndex].option1 }}</p>
+                <p><input type="radio" *ngIf="questions[currentIndex].option2 != null">{{ questions[currentIndex].option2 }}</p>
+                <p><input type="radio" *ngIf="questions[currentIndex].option3 != null">{{ questions[currentIndex].option3 }}</p>
+                <p><input type="radio" *ngIf="questions[currentIndex].option4 != null">{{ questions[currentIndex].option4 }}</p>
+
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-right: 28vh;">
+                <button type="button" class="btn btn-warning" (click)="previousQuestion()">Previous</button>
+                <button type="button" class="btn btn-info" (click)="nextQuestion()">Next</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+
+
+<!-- <div style="display: flex;">
+            <p style="padding-right: 1vh;">{{questions[0].id}}. </p>
+            <p>{{questions[0].question}}</p>
+        </div>
+        <div>
+            <p *ngIf="questions[0].option1 != null">{{questions[0].option1}}</p>
+            <p *ngIf="questions[0].option2 != null">{{questions[0].option2}}</p>
+            <p *ngIf="questions[0].option3 != null">{{questions[0].option3}}</p>
+            <p *ngIf="questions[0].option4 != null">{{questions[0].option4}}</p>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <button class="btn btn-warning">Back</button>
+            <button class="btn btn-info">Next</button>
+        </div> -->
+
+
+
+<!-- 
+<div class="col-8">
+    <div *ngFor="let question of questions">
+        <div style="display: flex;">
+            <p style="padding-right: 1vh;">{{question.id}}. </p>
+            <p>{{question.question}}</p>
+        </div>
+        <div>
+            <p *ngIf="question.option1 != null">{{question.option1}}</p>
+            <p *ngIf="question.option2 != null">{{question.option2}}</p>
+            <p *ngIf="question.option3 != null">{{question.option3}}</p>
+            <p *ngIf="question.option4 != null">{{question.option4}}</p>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <button class="btn btn-warning">Back</button>
+            <button class="btn btn-info">Next</button>
+        </div>
+    </div>
+</div> -->
