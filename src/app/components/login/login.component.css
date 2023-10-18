@@ -1,5 +1,4 @@
 .col11 {
-    height: 68vh;
     border-radius: 0px;
     background-color: rgb(93, 93, 255);
     justify-content: center;
@@ -9,7 +8,6 @@
 }
 
 .col12 {
-    height: 68vh;
     border-radius: 0px;
     padding: 4vh;
     display: flex;

@@ -9,10 +9,9 @@ export class UtilService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'https://assessment-test-backend.onrender.com/'
+  url = 'http://localhost:3000/'
   roleAs!: string | null;
 
-  
   //////////////////             Quiz Page         ///////////////////////////////////
 
   getQuestions() {
